@@ -40,14 +40,14 @@ upload_bp = Blueprint(
 # UPLOAD FOLDER
 # =====================================
 
-UPLOAD_FOLDER = Path(
-    "D:/FBI_Crime_Project/website/uploads"
-)
-
+from pathlib import Path
+import os
+BASE_DIR = Path(__file__).resolve().parent.parent
+UPLOAD_FOLDER = BASE_DIR / "uploads"
 UPLOAD_FOLDER.mkdir(
+    parents=True,
     exist_ok=True
-)
-
+    )
 # =====================================
 # GLOBAL STORAGE
 # =====================================
