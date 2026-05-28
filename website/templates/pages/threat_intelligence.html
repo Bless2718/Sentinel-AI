@@ -1,0 +1,959 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="dashboard-topbar">
+
+    <div>
+
+        <div class="topbar-subtitle">
+            SENTINEL AI • INTELLIGENCE COMMAND CENTER
+        </div>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input type="text"
+                   placeholder="Search intelligence systems..." />
+
+        </div>
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            All Systems Operational
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="hero-grid">
+
+    <!-- MAIN CARD -->
+
+    <div class="hero-main-card">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <i class="bi bi-shield-exclamation"></i>
+
+                AI THREAT SURVEILLANCE SYSTEM
+
+            </div>
+
+            <h1 class="hero-title">
+
+                Threat Intelligence Dashboard
+
+            </h1>
+
+            <p class="hero-description">
+
+                Advanced AI-powered threat intelligence platform engineered for anomaly detection,
+                operational risk analysis, hotspot escalation monitoring,
+                predictive threat surveillance, and real-time security intelligence analysis.
+
+            </p>
+
+            <div class="hero-actions">
+
+                <button class="hero-btn primary-btn">
+
+                    <i class="bi bi-radar"></i>
+
+                    Monitor Threats
+
+                </button>
+
+                <button class="hero-btn secondary-btn">
+
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    View Alerts
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-map">
+
+            <img
+                src="{{ url_for('static', filename='images/world-map.png') }}"
+                alt="Threat Map"
+            >
+
+        </div>
+
+    </div>
+
+    <!-- STATUS PANEL -->
+
+    <div class="hero-status-panel danger-panel">
+
+        <div class="status-panel-header">
+
+            THREAT STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring danger-ring">
+
+                <div class="status-ring-inner">
+
+                    LIVE
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status-value danger-text">
+
+            {{ threat_level }}
+
+        </div>
+
+        <div class="status-description">
+
+            AI surveillance systems actively monitoring anomaly behavior,
+            hotspot escalation, operational instability,
+            and predictive threat intelligence.
+
+        </div>
+
+        <div class="status-indicator danger-indicator">
+
+            <span class="pulse-dot red-pulse"></span>
+
+            THREAT MONITORING ACTIVE
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Total Threat Alerts
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-broadcast-pin"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ total_alerts }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            Active Escalation Detected
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Highest Risk Zone
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ highest_risk_zone }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-globe-americas"></i>
+
+            Geographic Threat Escalation
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Threat Level
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ threat_level }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Elevated Operational Risk
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Active Anomalies
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-cpu-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ active_anomalies }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-lightning-fill"></i>
+
+            AI Detection Engine Online
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Monitored Regions
+
+            </span>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-globe"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ monitored_regions }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            Geographic Monitoring Active
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Threat Severity Score
+
+            </span>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-fire"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ average_threat_score }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            Escalation Severity Tracking
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                AI Surveillance
+
+            </span>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-cpu"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            ACTIVE
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            Real-Time Intelligence Monitoring
+
+        </div>
+
+    </div>
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Threat Intelligence
+
+            </span>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-shield-check"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            ONLINE
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            Predictive Security Systems Operational
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     AI THREAT DETECTION SYSTEM
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                ANOMALY DETECTION
+
+            </div>
+
+            <h2>
+
+                AI Threat Detection System
+
+            </h2>
+
+            <p>
+
+                Machine learning anomaly intelligence
+                identifying suspicious crime spikes,
+                abnormal operational activity,
+                and emerging regional threats.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ anomaly_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     MAIN GRID
+===================================== -->
+
+<section class="dashboard-grid-main">
+
+    <div class="analytics-large">
+
+        <div class="card analytics-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        HOTSPOT ANALYSIS
+
+                    </div>
+
+                    <h2>
+
+                        Hotspot Risk Intelligence
+
+                    </h2>
+
+                    <p>
+
+                        Geographic cluster intelligence
+                        ranking operational threat zones.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                {{ risk_graph | safe }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="analytics-side">
+
+        <div class="card analytics-card intel-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        LIVE THREAT FEED
+
+                    </div>
+
+                    <h2>
+
+                        Threat Feed
+
+                    </h2>
+
+                    <p>
+
+                        Live operational intelligence updates.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="intel-feed">
+
+                <div class="intel-item">
+
+                    <div class="intel-dot red"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Escalation Monitoring
+
+                        </h5>
+
+                        <span>
+
+                            Elevated threat activity identified.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot purple"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Hotspot Surveillance
+
+                        </h5>
+
+                        <span>
+
+                            Regional cluster tracking enabled.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot cyan"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            AI Anomaly Detection
+
+                        </h5>
+
+                        <span>
+
+                            Predictive anomaly engine operational.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot green"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Forecast Integration
+
+                        </h5>
+
+                        <span>
+
+                            Threat prediction systems online.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     THREAT TIMELINE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                THREAT EVOLUTION
+
+            </div>
+
+            <h2>
+
+                Threat Escalation Timeline
+
+            </h2>
+
+            <p>
+
+                Historical operational analysis
+                visualizing escalation trends.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ threat_timeline_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     THREAT DISTRIBUTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                THREAT DISTRIBUTION
+
+            </div>
+
+            <h2>
+
+                Threat Distribution Intelligence
+
+            </h2>
+
+            <p>
+
+                Statistical intelligence distribution
+                analyzing operational anomaly density.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ threat_distribution_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     THREAT HEATMAP
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                SPATIAL THREAT ANALYSIS
+
+            </div>
+
+            <h2>
+
+                Threat Concentration Heatmap
+
+            </h2>
+
+            <p>
+
+                Spatial intelligence visualization exposing
+                concentrated operational threats.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ threat_heatmap | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     XAI SECTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                EXPLAINABLE AI
+
+            </div>
+
+            <h2>
+
+                Explainable Threat Intelligence
+
+            </h2>
+
+            <p>
+
+                SHAP-powered explainability systems identifying
+                the most influential operational threat indicators.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="intel-summary-grid">
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot purple"></div>
+
+            <div>
+
+                <h5>
+
+                    Crime Volume Influence
+
+                </h5>
+
+                <span>
+
+                    Crime count identified as primary anomaly trigger.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot cyan"></div>
+
+            <div>
+
+                <h5>
+
+                    Temporal Volatility
+
+                </h5>
+
+                <span>
+
+                    Sudden volatility spikes impacting AI decisions.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot red"></div>
+
+            <div>
+
+                <h5>
+
+                    Risk Escalation
+
+                </h5>
+
+                <span>
+
+                    Elevated escalation probability detected.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot green"></div>
+
+            <div>
+
+                <h5>
+
+                    AI Explainability
+
+                </h5>
+
+                <span>
+
+                    Transparent predictive intelligence active.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     THREAT TABLE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                THREAT DATASET
+
+            </div>
+
+            <h2>
+
+                Threat Intelligence Table
+
+            </h2>
+
+            <p>
+
+                AI-generated operational threat analysis dataset.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        {{ threat_table | safe }}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,649 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <i class="bi bi-clock-history"></i>
+
+            TEMPORAL CRIME INTELLIGENCE
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Time Intelligence
+            Analytics
+
+        </h1>
+
+        <p class="hero-description">
+
+            AI-powered temporal intelligence platform
+            engineered for predictive trend analysis,
+            seasonal crime modeling,
+            escalation forecasting,
+            anomaly-driven operational monitoring,
+            and long-term behavioral intelligence.
+
+        </p>
+
+        <!-- ACTIONS -->
+
+        <div class="hero-actions">
+
+            <button class="hero-btn primary-btn">
+
+                <i class="bi bi-activity"></i>
+
+                Live Forecast
+
+            </button>
+
+            <button class="hero-btn secondary-btn">
+
+                <i class="bi bi-bar-chart-line"></i>
+
+                Trend Analysis
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-status-panel">
+
+        <div class="status-panel-header">
+
+            TEMPORAL STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring">
+
+                <div class="status-ring-inner">
+
+                    LIVE
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status-value">
+
+            ACTIVE
+
+        </div>
+
+        <div class="status-description">
+
+            AI temporal monitoring systems actively
+            analyzing escalation cycles,
+            forecasting operational movement,
+            and detecting anomaly behavior patterns.
+
+        </div>
+
+        <div class="status-indicator">
+
+            <span class="pulse-dot"></span>
+
+            TEMPORAL ENGINE ACTIVE
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Peak Crime Year
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ peak_year }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            Highest Recorded Activity
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Peak Crime Month
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ peak_month }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-graph-up"></i>
+
+            Seasonal Escalation Identified
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Forecast Direction
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-cpu-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ forecast_direction }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-lightning-fill"></i>
+
+            Predictive Intelligence Active
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Threat Periods
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ threat_periods }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Temporal Anomalies Detected
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     YEARLY TREND
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                YEARLY ANALYSIS
+
+            </div>
+
+            <h2>
+
+                Yearly Crime Intelligence
+
+            </h2>
+
+            <p>
+
+                Long-term temporal intelligence analysis
+                tracking crime escalation,
+                operational evolution,
+                and yearly activity distribution.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ yearly_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND GRID
+===================================== -->
+
+<section class="dashboard-grid-2">
+
+    <!-- MONTHLY -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    MONTHLY ANALYSIS
+
+                </div>
+
+                <h2>
+
+                    Monthly Crime Activity
+
+                </h2>
+
+                <p>
+
+                    Seasonal intelligence analysis
+                    identifying monthly operational patterns,
+                    recurring surges,
+                    and temporal concentration periods.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ monthly_graph | safe }}
+
+        </div>
+
+    </div>
+
+    <!-- QUARTERLY -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    QUARTERLY ANALYSIS
+
+                </div>
+
+                <h2>
+
+                    Quarterly Intelligence
+
+                </h2>
+
+                <p>
+
+                    Quarterly operational analysis
+                    tracking crime evolution,
+                    escalation cycles,
+                    and strategic temporal movement.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ quarterly_graph | safe }}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     FORECAST + FEED
+===================================== -->
+
+<section class="dashboard-grid-main">
+
+    <!-- FORECAST -->
+
+    <div class="analytics-large">
+
+        <div class="card analytics-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        AI FORECASTING
+
+                    </div>
+
+                    <h2>
+
+                        AI Forecast Intelligence
+
+                    </h2>
+
+                    <p>
+
+                        Machine learning forecasting engine
+                        predicting future crime activity,
+                        temporal threat movement,
+                        and operational escalation probability.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                {{ forecast_graph | safe }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SIDE FEED -->
+
+    <div class="analytics-side">
+
+        <div class="card analytics-card intel-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        LIVE FEED
+
+                    </div>
+
+                    <h2>
+
+                        Temporal Intelligence Feed
+
+                    </h2>
+
+                    <p>
+
+                        Live forecasting insights.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="intel-feed">
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot purple"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Predictive Forecasting
+
+                        </h5>
+
+                        <span>
+
+                            AI forecasting engine operating normally.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot red"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Threat Escalation
+
+                        </h5>
+
+                        <span>
+
+                            Temporal anomalies detected in projections.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot cyan"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Seasonal Monitoring
+
+                        </h5>
+
+                        <span>
+
+                            Monthly activity cycles under surveillance.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot green"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            AI Confidence
+
+                        </h5>
+
+                        <span>
+
+                            Predictive model confidence stable.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     ANOMALY DETECTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                ANOMALY DETECTION
+
+            </div>
+
+            <h2>
+
+                Temporal Threat Detection
+
+            </h2>
+
+            <p>
+
+                AI-driven anomaly intelligence
+                identifying suspicious spikes,
+                irregular operational behavior,
+                and emerging temporal threats.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ anomaly_graph | safe }}
+
+    </div>
+
+</section>
+
+{% endblock %}

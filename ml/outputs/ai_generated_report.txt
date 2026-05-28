@@ -1,0 +1,6 @@
+AI CRIME INTELLIGENCE REPORT
+
+- Best forecasting model: Linear Regression with R2 Score of 0.933.
+- Cluster 2 is the most dangerous hotspot with 199272 crimes and risk level Extreme.
+- The AI detected 8 abnormal crime periods across the dataset.
+- Predicted future monthly crime average is approximately 2678 crimes.

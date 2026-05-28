@@ -1,0 +1,773 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            AI FORECAST ENGINE
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Forecast Intelligence
+            Center
+
+        </h1>
+
+        <p class="hero-description">
+
+            Advanced predictive intelligence platform
+            analyzing escalation behavior,
+            anomaly probability,
+            operational forecasting patterns,
+            and future threat movement using AI-driven analytics.
+
+        </p>
+
+        <!-- ACTIONS -->
+
+        <div class="hero-actions">
+
+            <button class="hero-btn primary-btn">
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+                Forecast Analytics
+
+            </button>
+
+            <button class="hero-btn secondary-btn">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+                Risk Intelligence
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-status-panel">
+
+        <div class="status-panel-header">
+
+            FORECAST STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring">
+
+                <div class="status-ring-inner">
+
+                    {{ model_accuracy }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status-value">
+
+            ACTIVE
+
+        </div>
+
+        <div class="status-description">
+
+            AI predictive systems actively monitoring
+            temporal escalation patterns and operational forecasts.
+
+        </div>
+
+        <div class="status-indicator">
+
+            <span class="pulse-dot"></span>
+
+            LIVE PREDICTIVE ENGINE
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     KPI SECTION
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI 1 -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Forecast Accuracy
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ model_accuracy }}%
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            AI Model Performance
+
+        </div>
+
+    </div>
+
+    <!-- KPI 2 -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Threat Escalation
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ projected_risk }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Forecast Threat Activity
+
+        </div>
+
+    </div>
+
+    <!-- KPI 3 -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Forecast Horizon
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-clock-history"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ forecast_horizon }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            Long-Term AI Forecast
+
+        </div>
+
+    </div>
+
+    <!-- KPI 4 -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Avg Risk Score
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-shield-fill-exclamation"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ average_risk_score }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-shield-check"></i>
+
+            Predictive Monitoring Active
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Latest Prediction
+
+            </span>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-bar-chart-line-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ latest_prediction }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            Current Forecast Estimate
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Forecast Growth
+
+            </span>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-arrow-repeat"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ forecast_growth }}%
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            AI Growth Projection
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                Volatility Index
+
+            </span>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-activity"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ volatility_score }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            Temporal Instability Analysis
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-label">
+
+                AI Engine Status
+
+            </span>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-cpu"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            ONLINE
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            Predictive Systems Active
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     MAIN FORECAST GRAPH
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                PREDICTIVE ANALYTICS
+
+            </div>
+
+            <h2>
+
+                Predictive Forecast Timeline
+
+            </h2>
+
+            <p>
+
+                AI-generated forecasting intelligence analyzing
+                projected operational crime movement,
+                escalation patterns,
+                and predictive temporal activity.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ forecast_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND GRID
+===================================== -->
+
+<section class="dashboard-grid-2">
+
+    <!-- SCENARIO ANALYSIS -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    SCENARIO ENGINE
+
+                </div>
+
+                <h2>
+
+                    Scenario Intelligence
+
+                </h2>
+
+                <p>
+
+                    Multi-scenario forecasting system evaluating
+                    optimistic,
+                    moderate,
+                    and worst-case operational outcomes.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ scenario_graph | safe }}
+
+        </div>
+
+    </div>
+
+    <!-- RISK ANALYSIS -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    RISK PROJECTION
+
+                </div>
+
+                <h2>
+
+                    Forecast Risk Intelligence
+
+                </h2>
+
+                <p>
+
+                    AI-driven operational risk forecasting system.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ risk_graph | safe }}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     VOLATILITY SECTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                VOLATILITY INTELLIGENCE
+
+            </div>
+
+            <h2>
+
+                Forecast Volatility Analysis
+
+            </h2>
+
+            <p>
+
+                AI volatility intelligence identifying
+                instability periods,
+                sudden operational fluctuations,
+                and predictive uncertainty movement.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ volatility_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     EXECUTIVE SUMMARY
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                EXECUTIVE SUMMARY
+
+            </div>
+
+            <h2>
+
+                Forecast Intelligence Summary
+
+            </h2>
+
+            <p>
+
+                Executive-level predictive intelligence briefing.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="intel-summary-grid">
+
+        <!-- CARD -->
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot purple"></div>
+
+            <div>
+
+                <h5>
+
+                    Escalation Monitoring
+
+                </h5>
+
+                <span>
+
+                    AI systems detecting elevated threat probability.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot cyan"></div>
+
+            <div>
+
+                <h5>
+
+                    Forecast Stability
+
+                </h5>
+
+                <span>
+
+                    Predictive confidence operating within threshold.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot green"></div>
+
+            <div>
+
+                <h5>
+
+                    Predictive Intelligence
+
+                </h5>
+
+                <span>
+
+                    Multi-model temporal analysis engine active.
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="intel-summary-card">
+
+            <div class="intel-dot red"></div>
+
+            <div>
+
+                <h5>
+
+                    Threat Projection
+
+                </h5>
+
+                <span>
+
+                    Future operational hotspots under surveillance.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     FORECAST TABLE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                FORECAST DATA
+
+            </div>
+
+            <h2>
+
+                Predictive Intelligence Dataset
+
+            </h2>
+
+            <p>
+
+                Operational forecast intelligence generated
+                by the AI predictive analytics engine.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        {{ forecast_table | safe }}
+
+    </div>
+
+</section>
+
+{% endblock %}

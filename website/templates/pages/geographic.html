@@ -1,0 +1,598 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <i class="bi bi-globe2"></i>
+
+            GEOSPATIAL CRIME INTELLIGENCE
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Geographic Intelligence
+            Center
+
+        </h1>
+
+        <p class="hero-description">
+
+            AI-powered spatial intelligence platform
+            engineered for hotspot detection,
+            operational zone analysis,
+            geographic clustering,
+            and predictive regional threat surveillance.
+
+        </p>
+
+        <!-- ACTIONS -->
+
+        <div class="hero-actions">
+
+            <button class="hero-btn primary-btn">
+
+                <i class="bi bi-map-fill"></i>
+
+                Explore Hotspots
+
+            </button>
+
+            <button class="hero-btn secondary-btn">
+
+                <i class="bi bi-radar"></i>
+
+                Threat Zones
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-status-panel">
+
+        <div class="status-panel-header">
+
+            GEO STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring">
+
+                <div class="status-ring-inner">
+
+                    LIVE
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status-value">
+
+            ACTIVE
+
+        </div>
+
+        <div class="status-description">
+
+            Real-time geographic surveillance systems
+            monitoring regional threat density
+            and hotspot escalation patterns.
+
+        </div>
+
+        <div class="status-indicator">
+
+            <span class="pulse-dot"></span>
+
+            LIVE GEO MONITORING
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Active Hotspots
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ active_hotspots }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            AI Cluster Detection Active
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    High Risk Zones
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ high_risk_zones }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Elevated Threat Presence
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Threat Density
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-globe-americas"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ threat_density }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            Spatial Density Escalation
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Cluster Regions
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-diagram-3-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ cluster_regions }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-shield-check"></i>
+
+            Regional Intelligence Active
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     MAIN HOTSPOT MAP
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                HOTSPOT SURVEILLANCE
+
+            </div>
+
+            <h2>
+
+                Crime Hotspot Intelligence Map
+
+            </h2>
+
+            <p>
+
+                AI-generated geospatial intelligence
+                identifying operational crime hotspots,
+                strategic risk zones,
+                and regional threat concentration areas.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ hotspot_map | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND GRID
+===================================== -->
+
+<section class="dashboard-grid-main">
+
+    <!-- LEFT -->
+
+    <div class="analytics-large">
+
+        <div class="card analytics-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        THREAT DENSITY
+
+                    </div>
+
+                    <h2>
+
+                        Crime Density Heatmap
+
+                    </h2>
+
+                    <p>
+
+                        Density-based operational intelligence
+                        revealing concentrated crime activity,
+                        escalation zones,
+                        and high-risk geographic regions.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                {{ heatmap_graph | safe }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="analytics-side">
+
+        <div class="card analytics-card intel-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        LIVE INTELLIGENCE
+
+                    </div>
+
+                    <h2>
+
+                        Regional Intelligence Feed
+
+                    </h2>
+
+                    <p>
+
+                        Real-time geographic monitoring insights.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="intel-feed">
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot red"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Elevated Threat Zones
+
+                        </h5>
+
+                        <span>
+
+                            AI systems detected increased hotspot density.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot purple"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Cluster Intelligence
+
+                        </h5>
+
+                        <span>
+
+                            Spatial grouping models currently operational.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot cyan"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Heatmap Surveillance
+
+                        </h5>
+
+                        <span>
+
+                            Regional monitoring active across all zones.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot green"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Forecast Integration
+
+                        </h5>
+
+                        <span>
+
+                            Predictive geographic analysis enabled.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     RISK ANALYTICS
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                RISK ANALYSIS
+
+            </div>
+
+            <h2>
+
+                Regional Risk Intelligence
+
+            </h2>
+
+            <p>
+
+                Operational cluster risk analysis
+                identifying high-priority geographic zones
+                and escalation probabilities.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ risk_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     RISK TABLE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                INTELLIGENCE DATASET
+
+            </div>
+
+            <h2>
+
+                Geographic Risk Intelligence Table
+
+            </h2>
+
+            <p>
+
+                AI-generated operational risk rankings,
+                cluster severity analysis,
+                and hotspot intelligence classifications.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        {{ risk_table | safe }}
+
+    </div>
+
+</section>
+
+{% endblock %}

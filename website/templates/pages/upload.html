@@ -1,0 +1,88 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                DATA INGESTION
+
+            </div>
+
+            <h2>
+
+                Upload Intelligence Dataset
+
+            </h2>
+
+            <p>
+
+                Upload real-world crime,
+                surveillance,
+                operational,
+                or incident datasets
+                for live AI analysis.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <form
+
+        action="/upload-data"
+        method="POST"
+        enctype="multipart/form-data"
+
+        class="upload-form"
+    >
+
+        <div class="upload-box">
+
+            <i class="bi bi-cloud-upload-fill"></i>
+
+            <h3>
+
+                Upload CSV or Excel File
+
+            </h3>
+
+            <p>
+
+                Supported:
+                .csv,
+                .xlsx,
+                .xls
+
+            </p>
+
+            <input
+                type="file"
+                name="dataset"
+                required
+            >
+
+        </div>
+
+        <button
+            type="submit"
+            class="hero-btn primary-btn"
+        >
+
+            <i class="bi bi-upload"></i>
+
+            Upload Dataset
+
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

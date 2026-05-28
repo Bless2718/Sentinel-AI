@@ -1,0 +1,603 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            AI CATEGORY ANALYTICS ENGINE
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Crime Category
+            Intelligence
+
+        </h1>
+
+        <p class="hero-description">
+
+            Advanced AI-powered classification intelligence platform
+            delivering offense analytics,
+            category segmentation,
+            escalation monitoring,
+            predictive threat grouping,
+            and operational crime distribution analysis.
+
+        </p>
+
+        <!-- ACTIONS -->
+
+        <div class="hero-actions">
+
+            <button class="hero-btn primary-btn">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+                View Analytics
+
+            </button>
+
+            <button class="hero-btn secondary-btn">
+
+                <i class="bi bi-shield-exclamation"></i>
+
+                Threat Matrix
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-status-panel">
+
+        <div class="status-panel-header">
+
+            CATEGORY STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring">
+
+                <div class="status-ring-inner">
+
+                    LIVE
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="status-value">
+
+            ACTIVE
+
+        </div>
+
+        <div class="status-description">
+
+            AI classification engines actively monitoring
+            offense distributions,
+            escalation categories,
+            and operational threat segmentation.
+
+        </div>
+
+        <div class="status-indicator">
+
+            <span class="pulse-dot"></span>
+
+            LIVE CATEGORY MONITORING
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Total Categories
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-grid-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ total_categories }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            AI Classification Active
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Top Crime Type
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-shield-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ top_crime_type }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-graph-up-arrow"></i>
+
+            Highest Recorded Activity
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Most Dangerous
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ most_dangerous }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Elevated Threat Severity
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Total Incidents
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon green-icon">
+
+                <i class="bi bi-activity"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ total_incidents }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            Operational Dataset Active
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     CATEGORY DISTRIBUTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                CATEGORY DISTRIBUTION
+
+            </div>
+
+            <h2>
+
+                Crime Category Distribution
+
+            </h2>
+
+            <p>
+
+                Intelligence visualization displaying
+                criminal activity distribution across
+                offense classifications,
+                operational sectors,
+                and monitored threat categories.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ category_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND GRID
+===================================== -->
+
+<section class="dashboard-grid-main">
+
+    <!-- LEFT -->
+
+    <div class="analytics-large">
+
+        <div class="card analytics-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        CATEGORY ANALYSIS
+
+                    </div>
+
+                    <h2>
+
+                        Top Crime Categories
+
+                    </h2>
+
+                    <p>
+
+                        AI-ranked intelligence breakdown
+                        of dominant criminal activities
+                        across monitored operational regions.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                {{ top_category_graph | safe }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="analytics-side">
+
+        <div class="card analytics-card intel-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        LIVE THREAT FEED
+
+                    </div>
+
+                    <h2>
+
+                        Threat Overview
+
+                    </h2>
+
+                    <p>
+
+                        Operational intelligence summary.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="intel-feed">
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot red"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Category Escalation
+
+                        </h5>
+
+                        <span>
+
+                            High-severity activity identified.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot purple"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            AI Classification
+
+                        </h5>
+
+                        <span>
+
+                            Automated category mapping enabled.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot cyan"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Trend Intelligence
+
+                        </h5>
+
+                        <span>
+
+                            Long-term category monitoring active.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ITEM -->
+
+                <div class="intel-item">
+
+                    <div class="intel-dot green"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Predictive Analysis
+
+                        </h5>
+
+                        <span>
+
+                            Forecast-linked intelligence enabled.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     TREND ANALYSIS
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                TEMPORAL CATEGORY ANALYSIS
+
+            </div>
+
+            <h2>
+
+                Crime Category Trend Intelligence
+
+            </h2>
+
+            <p>
+
+                Multi-year analytical intelligence
+                tracking category evolution,
+                operational shifts,
+                and long-term criminal activity patterns.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ trend_graph | safe }}
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     CATEGORY TABLE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                CATEGORY DATASET
+
+            </div>
+
+            <h2>
+
+                Crime Category Intelligence Table
+
+            </h2>
+
+            <p>
+
+                Detailed AI-generated intelligence table
+                containing offense classifications,
+                incident frequency,
+                operational rankings,
+                and strategic threat indicators.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-container">
+
+        {{ category_table | safe }}
+
+    </div>
+
+</section>
+
+{% endblock %}

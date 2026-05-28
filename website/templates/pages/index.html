@@ -1,0 +1,1195 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="executive-dashboard">
+<!-- =====================================
+     HERO SECTION
+===================================== -->
+
+<section class="dashboard-hero">
+
+    <!-- LEFT CONTENT -->
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            EXECUTIVE AI INTELLIGENCE SYSTEM
+
+        </div>
+
+        <h1 class="hero-title">
+
+            Crime Intelligence
+            Command Center
+
+        </h1>
+
+        <p class="hero-description">
+
+            Enterprise-grade predictive intelligence platform
+            delivering anomaly surveillance,
+            geographic hotspot monitoring,
+            temporal crime forecasting,
+            and AI-powered operational analytics.
+
+        </p>
+
+        <!-- HERO ACTIONS -->
+
+        <div class="hero-actions">
+            <a href="/generate-report"
+               class="hero-btn primary-btn">
+
+                <i class="bi bi-file-earmark-text-fill"></i>
+                Download AI Report
+            </a>
+
+            <button class="hero-btn primary-btn">
+
+                <i class="bi bi-bar-chart-line-fill"></i>
+
+                Predictive Intelligence Active
+
+            </button>
+
+            <button class="hero-btn secondary-btn">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+                Threat Monitoring Online
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT STATUS PANEL -->
+
+    <div class="hero-status-panel">
+
+        <div class="status-panel-header">
+
+            LIVE AI STATUS
+
+        </div>
+
+        <div class="status-main">
+
+            <div class="status-ring">
+
+                <div class="status-ring-inner">
+
+                    {{ ai_confidence }}%
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="risk-score-text">
+
+            Risk Score:
+            {{ risk_score }}%
+
+        </div>
+        <div class="status-value">
+
+            {{ risk_level }}
+
+        </div>
+
+        <div class="status-description">
+
+            AI intelligence engines actively monitoring
+            anomaly escalation,
+            predictive threat movement,
+            and operational hotspot behavior.
+
+        </div>
+
+        <div class="status-indicator">
+
+            <span class="pulse-dot"></span>
+
+            LIVE MONITORING ACTIVE
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+     LIVE FILTER BAR
+===================================== -->
+
+<section class="card analytics-card filter-bar-card">
+
+    <form method="GET"
+          action="/"
+          class="filter-form">
+
+        <!-- YEAR FILTER -->
+
+        <div class="filter-group">
+
+            <label>
+
+                Year
+
+            </label>
+
+            <select name="year"
+                    class="filter-select">
+
+                <option value="ALL">
+
+                    All Years
+
+                </option>
+
+                {% for year in available_years %}
+
+                <option value="{{ year }}"
+                    {% if selected_year == year|string %}
+                    selected
+                    {% endif %}>
+
+                    {{ year }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <!-- CRIME FILTER -->
+
+        <div class="filter-group">
+
+            <label>
+
+                Crime Category
+
+            </label>
+
+            <select name="crime"
+                    class="filter-select">
+
+                <option value="ALL">
+
+                    All Categories
+
+                </option>
+
+                {% for crime in available_crimes %}
+
+                <option value="{{ crime }}"
+                    {% if selected_crime == crime %}
+                    selected
+                    {% endif %}>
+
+                    {{ crime }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <!-- THREAT FILTER -->
+
+        <div class="filter-group">
+
+            <label>
+
+                Threat State
+
+            </label>
+
+            <select name="threat"
+                    class="filter-select">
+
+                <option value="ALL">
+
+                    All Threat States
+
+                </option>
+
+                <option value="LOW"
+                    {% if selected_threat == "LOW" %}
+                    selected
+                    {% endif %}>
+
+                    LOW
+
+                </option>
+
+                <option value="MODERATE"
+                    {% if selected_threat == "MODERATE" %}
+                    selected
+                    {% endif %}>
+
+                    MODERATE
+
+                </option>
+
+                <option value="HIGH"
+                    {% if selected_threat == "HIGH" %}
+                    selected
+                    {% endif %}>
+
+                    HIGH
+
+                </option>
+
+                <option value="CRITICAL"
+                    {% if selected_threat == "CRITICAL" %}
+                    selected
+                    {% endif %}>
+
+                    CRITICAL
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <a href="/"
+           class="hero-btn primary-btn reset-btn">
+
+            <i class="bi bi-arrow-clockwise"></i>
+
+            Reset Filters
+
+        </a>
+
+        <button type="submit"
+                class="hero-btn primary-btn">
+
+            <i class="bi bi-funnel-fill"></i>
+
+            Apply Filters
+
+        </button>
+
+    </form>
+
+</section>
+<!-- =====================================
+     KPI GRID
+===================================== -->
+
+<section class="kpi-grid">
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Total Crimes
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon purple-icon">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ total_crimes }}
+
+        </div>
+
+        <div class="kpi-trend positive">
+
+            <i class="bi bi-arrow-up-right"></i>
+
+            Enterprise Crime Intelligence
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Active Hotspots
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-geo-alt-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ active_hotspots }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-radar"></i>
+
+            Geospatial Threat Monitoring
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Active Anomalies
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon cyan-icon">
+
+                <i class="bi bi-cpu-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ anomaly_count }}
+
+        </div>
+
+        <div class="kpi-trend neutral">
+
+            <i class="bi bi-lightning-fill"></i>
+
+            AI Detection Systems Active
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+
+    <div class="kpi-card danger-kpi">
+
+        <div class="kpi-top">
+
+            <div>
+
+                <span class="kpi-label">
+
+                    Threat Level
+
+                </span>
+
+            </div>
+
+            <div class="kpi-icon red-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+        </div>
+
+        <div class="kpi-number">
+
+            {{ risk_level }}
+
+        </div>
+
+        <div class="kpi-trend danger">
+
+            <i class="bi bi-shield-fill-exclamation"></i>
+
+            Operational Threat Intelligence
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     AI INTELLIGENCE METRICS
+===================================== -->
+
+<section class="dashboard-grid-3">
+
+    <!-- AI CONFIDENCE -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon purple-icon">
+
+            <i class="bi bi-cpu-fill"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                AI Confidence
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ ai_confidence }}%
+
+            </h2>
+
+            <p class="metric-description">
+
+                Combined predictive intelligence confidence score.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FORECAST DIRECTION -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon cyan-icon">
+
+            <i class="bi bi-graph-up-arrow"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Forecast Direction
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ forecast_direction }}
+
+            </h2>
+
+            <p class="metric-description">
+
+                AI temporal trend movement classification.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ACTIVE ANOMALIES -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon red-icon">
+
+            <i class="bi bi-exclamation-triangle-fill"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Active Anomalies
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ anomaly_count }}
+
+            </h2>
+
+            <p class="metric-description">
+
+                Real-time anomaly detection events identified.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================
+     EXECUTIVE INTELLIGENCE KPIs
+===================================== -->
+
+<section class="dashboard-grid-4">
+
+    <!-- THREAT SCORE -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon red-icon">
+
+            <i class="bi bi-shield-fill-exclamation"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Threat Score
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ threat_score }}/100
+
+            </h2>
+
+            <p class="metric-description">
+
+                Composite operational intelligence threat score.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- RISK CLASSIFICATION -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon purple-icon">
+
+            <i class="bi bi-exclamation-octagon-fill"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Risk Classification
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ risk_classification }}
+
+            </h2>
+
+            <p class="metric-description">
+
+                AI-generated operational risk category.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- VOLATILITY LEVEL -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon cyan-icon">
+
+            <i class="bi bi-activity"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Volatility Level
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ volatility_level }}
+
+            </h2>
+
+            <p class="metric-description">
+
+                Predictive crime movement instability classification.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- VOLATILITY SCORE -->
+
+    <div class="card analytics-card metric-card">
+
+        <div class="metric-icon green-icon">
+
+            <i class="bi bi-graph-up"></i>
+
+        </div>
+
+        <div class="metric-content">
+
+            <span class="metric-label">
+
+                Volatility Score
+
+            </span>
+
+            <h2 class="metric-value">
+
+                {{ volatility_score }}
+
+            </h2>
+
+            <p class="metric-description">
+
+                Statistical volatility derived from forecast movement.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     MAIN GRID
+===================================== -->
+
+<section class="dashboard-grid-main">
+
+    <!-- LEFT -->
+
+    <div class="analytics-large">
+
+        <div class="card analytics-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        TREND ANALYSIS
+
+                    </div>
+
+                    <h2>
+
+                        Crime Trend Intelligence
+
+                    </h2>
+
+                    <p>
+
+                        Multi-year operational crime activity analysis,
+                        escalation forecasting,
+                        and AI-driven temporal monitoring.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+
+                {{ yearly_graph | safe }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="analytics-side">
+
+        <div class="card analytics-card intel-card">
+
+            <div class="card-header-custom">
+
+                <div>
+
+                    <div class="section-tag">
+
+                        LIVE AI FEED
+
+                    </div>
+
+                    <h2>
+
+                        Intelligence Feed
+
+                    </h2>
+
+                    <p>
+
+                        Real-time AI operational intelligence updates.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="intel-feed">
+
+                <div class="intel-item">
+
+                    <div class="intel-dot purple"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Forecast Direction
+
+                        </h5>
+
+                        <span>
+
+                            Current forecast trend:
+                            {{ forecast_direction }}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot red"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Threat Monitoring
+
+                        </h5>
+
+                        <span>
+
+                            {{ anomaly_count }} anomaly events detected.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot cyan"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            Hotspot Clustering
+
+                        </h5>
+
+                        <span>
+
+                            {{ active_hotspots }} active hotspot clusters monitored.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="intel-item">
+
+                    <div class="intel-dot green"></div>
+
+                    <div class="intel-content">
+
+                        <h5>
+
+                            AI Confidence
+
+                        </h5>
+
+                        <span>
+
+                            Predictive confidence currently at
+                            {{ ai_confidence }}%.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECOND GRID
+===================================== -->
+
+<section class="dashboard-grid-2">
+
+    <!-- FORECAST -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    PREDICTIVE ANALYTICS
+
+                </div>
+
+                <h2>
+
+                    Forecast Intelligence
+
+                </h2>
+
+                <p>
+
+                    Predictive AI forecasting
+                    and future operational crime movement analysis.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ forecast_graph | safe }}
+
+        </div>
+
+    </div>
+
+    <!-- THREAT -->
+
+    <div class="card analytics-card">
+
+        <div class="card-header-custom">
+
+            <div>
+
+                <div class="section-tag">
+
+                    THREAT DETECTION
+
+                </div>
+
+                <h2>
+
+                    Threat Intelligence
+
+                </h2>
+
+                <p>
+
+                    Machine learning anomaly detection
+                    and operational threat monitoring systems.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ anomaly_graph | safe }}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     MAP SECTION
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                GEOGRAPHIC SURVEILLANCE
+
+            </div>
+
+            <h2>
+
+                Geographic Crime Intelligence
+
+            </h2>
+
+            <p>
+
+                Real-time hotspot visualization,
+                regional crime clustering,
+                and operational threat mapping systems.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+
+        {{ hotspot_map | safe }}
+
+    </div>
+
+</section>
+<!-- =====================================
+     OPERATIONAL ALERT ENGINE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                LIVE ALERT ENGINE
+
+            </div>
+
+            <h2>
+
+                Operational Intelligence Alerts
+
+            </h2>
+
+            <p>
+
+                Real-time AI-generated
+                operational threat alerts.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="intel-feed">
+
+        {% for alert in operational_alerts %}
+
+        <div class="intel-item">
+
+            <div class="intel-dot {{ alert.severity }}"></div>
+
+            <div class="intel-content">
+
+                <h5>
+
+                    {{ alert.title }}
+
+                </h5>
+
+                <span>
+
+                    {{ alert.message }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<!-- =====================================
+     AI RECOMMENDATION ENGINE
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                AI RECOMMENDATION ENGINE
+
+            </div>
+
+            <h2>
+
+                Predictive Intelligence Recommendations
+
+            </h2>
+
+            <p>
+
+                AI-generated strategic operational recommendations
+                based on anomaly detection,
+                hotspot clustering,
+                forecast movement,
+                and predictive intelligence analysis.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="intel-feed">
+
+        {% for recommendation in ai_recommendations %}
+
+        <div class="intel-item">
+
+            <div class="intel-dot red"></div>
+
+            <div class="intel-content">
+
+                <h5>
+
+                    AI Strategic Advisory
+
+                </h5>
+
+                <span>
+
+                    {{ recommendation }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<!-- =====================================
+     EXECUTIVE AI SUMMARY
+===================================== -->
+
+<section class="card analytics-card">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <div class="section-tag">
+
+                EXECUTIVE AI REPORT
+
+            </div>
+
+            <h2>
+
+                Strategic Intelligence Summary
+
+            </h2>
+
+            <p>
+
+                AI-generated operational intelligence report
+                summarizing predictive activity,
+                anomaly surveillance,
+                hotspot monitoring,
+                and strategic threat assessment.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="strategic-report-box">
+
+        <pre>{{ strategic_report }}</pre>
+
+    </div>
+
+</section>
+
+{% endblock %}

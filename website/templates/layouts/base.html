@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ========================================= -->
+    <!-- META -->
+    <!-- ========================================= -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Sentinel AI | Intelligence Command Center
+    </title>
+
+    <!-- ========================================= -->
+    <!-- GOOGLE FONT -->
+    <!-- ========================================= -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP -->
+    <!-- ========================================= -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP ICONS -->
+    <!-- ========================================= -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- ========================================= -->
+    <!-- PLOTLY -->
+    <!-- ========================================= -->
+
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+    <!-- ========================================= -->
+    <!-- CUSTOM CSS -->
+    <!-- ========================================= -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- BACKGROUND EFFECTS -->
+    <!-- ========================================= -->
+
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+    <!-- ========================================= -->
+    <!-- SIDEBAR -->
+    <!-- ========================================= -->
+
+    <aside class="sidebar"
+           id="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+
+                <i class="bi bi-shield-check"></i>
+
+            </div>
+
+            <div>
+
+                <h2>Sentinel AI</h2>
+
+                <p>Predictive Intelligence</p>
+
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION -->
+
+        <div class="sidebar-section">
+
+            <span class="sidebar-label">
+                Command Center
+            </span>
+
+            <a href="/"
+               class="nav-item">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+
+                <span>
+                    Executive Overview
+                </span>
+
+            </a>
+
+            <a href="/forecasting"
+               class="nav-item">
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+                <span>
+                    Forecast Intelligence
+                </span>
+
+            </a>
+
+            <a href="/geographic"
+               class="nav-item">
+
+                <i class="bi bi-globe2"></i>
+
+                <span>
+                    Geographic Intelligence
+                </span>
+
+            </a>
+
+            <a href="/crime-categories"
+               class="nav-item">
+
+                <i class="bi bi-grid-fill"></i>
+
+                <span>
+                    Crime Categories
+                </span>
+
+            </a>
+
+            <a href="/time-intelligence"
+               class="nav-item">
+
+                <i class="bi bi-clock-history"></i>
+
+                <span>
+                    Time Intelligence
+                </span>
+
+            </a>
+
+            <a href="/threat-intelligence"
+               class="nav-item">
+
+                <i class="bi bi-exclamation-diamond-fill"></i>
+
+                <span>
+                    Threat Intelligence
+                </span>
+
+            </a>
+
+            <a href="/upload"
+               class="nav-item">
+
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                <span>
+                    Data Upload
+                </span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- ========================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================= -->
+
+    <main class="main-container">
+
+        <!-- ========================================= -->
+        <!-- TOP NAVBAR -->
+        <!-- ========================================= -->
+
+        <header class="topbar">
+
+            <!-- LEFT -->
+
+            <div>
+
+                <p class="topbar-subtitle">
+                    SENTINEL AI • INTELLIGENCE COMMAND CENTER
+                </p>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="topbar-right">
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="text"
+                           placeholder="Search intelligence systems">
+
+                </div>
+
+                <!-- STATUS -->
+
+                <div class="live-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        All Systems Operational
+                    </span>
+
+                </div>
+
+                <!-- PROFILE -->
+
+                <div class="profile-box">
+
+                    <div class="profile-avatar">
+
+                        SA
+
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Sentinel Admin
+                        </h4>
+
+                        <p>
+                            Chief Intelligence Officer
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+       
+        <!-- ========================================= -->
+        <!-- PAGE CONTENT -->
+        <!-- ========================================= -->
+
+        <section class="page-content">
+
+            {% block content %}
+            {% endblock %}
+
+        </section>
+
+    </main>
+
+    <!-- ========================================= -->
+    <!-- ACTIVE PAGE SCRIPT -->
+    <!-- ========================================= -->
+
+    <script>
+
+        const currentPath =
+            window.location.pathname;
+
+        const navItems =
+            document.querySelectorAll(".nav-item");
+
+        navItems.forEach(item => {
+
+            if(item.getAttribute("href") === currentPath){
+
+                item.classList.add("active");
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
