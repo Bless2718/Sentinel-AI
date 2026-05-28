@@ -1,6 +1,6 @@
 import pandas as pd
 
-from models.crime_model import CrimeData
+from website.models.crime_model import CrimeData
 
 # =====================================
 # THREAT CLASSIFICATION ENGINE

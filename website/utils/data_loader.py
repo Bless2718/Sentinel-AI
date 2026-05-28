@@ -1,13 +1,13 @@
-from utils.data_standardizer import (
+from website.utils.data_standardizer import (
     standardize_dataframe
 )
 import pandas as pd
 from pathlib import Path
-from utils.data_registry import (
+from website.utils.data_registry import (
     ACTIVE_DATA
 )
 
-from utils.ai_pipeline import (
+from website.utils.ai_pipeline import (
     generate_forecast,
     generate_anomalies,
     generate_hotspots

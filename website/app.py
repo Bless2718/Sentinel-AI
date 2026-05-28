@@ -1,16 +1,16 @@
 from flask import Flask
 import os
-from models.user_model import User
+from website.models.user_model import User
 from flask_login import LoginManager
-from routes.auth import auth_bp
-from routes.api.api_routes import (
+from website.routes.auth import auth_bp
+from website.routes.api.api_routes import (
     api_bp
 )
 # =====================================
 # DATABASE
 # =====================================
 
-from models.database import db
+from website.models.database import db
 
 # =====================================
 # CREATE FLASK APP
@@ -81,28 +81,28 @@ def load_user(user_id):
     int(user_id)
 )
 # =====================================
-# IMPORT MODELS
+# import website.models
 # =====================================
 
-from models.crime_model import CrimeData
+from website.models.crime_model import CrimeData
 
 # =====================================
 # IMPORT BLUEPRINTS
 # =====================================
 
-from routes.home import home_bp
+from website.routes.home import home_bp
 
-from routes.forecasting import forecasting_bp
+from website.routes.forecasting import forecasting_bp
 
-from routes.geographic import geographic_bp
+from website.routes.geographic import geographic_bp
 
-from routes.categories import categories_bp
+from website.routes.categories import categories_bp
 
-from routes.time_intelligence import time_bp
+from website.routes.time_intelligence import time_bp
 
-from routes.threat import threat_bp
+from website.routes.threat import threat_bp
 
-from routes.upload import upload_bp
+from website.routes.upload import upload_bp
 
 # =====================================
 # REGISTER BLUEPRINTS

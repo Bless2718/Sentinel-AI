@@ -1,9 +1,9 @@
 from app import app
 
-from models.database import db
+from website.models.database import db
 
 # IMPORT YOUR MODEL
-from models.crime_model import CrimeData
+from website.models.crime_model import CrimeData
 
 with app.app_context():
 

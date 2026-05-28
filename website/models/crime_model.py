@@ -1,4 +1,4 @@
-from models.database import db
+from website.models.database import db
 
 class CrimeData(db.Model):
 

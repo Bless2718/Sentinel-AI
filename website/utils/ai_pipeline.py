@@ -4,11 +4,11 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 from sklearn.ensemble import IsolationForest
 
-from utils.forecast_engine import (
+from website.utils.forecast_engine import (
     generate_prophet_forecast
 )
 
-from utils.dataset_profiler import (
+from website.utils.dataset_profiler import (
     profile_dataset
 )
 

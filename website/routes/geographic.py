@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from utils.dataset_profiler import (
+from website.utils.dataset_profiler import (
     profile_dataset
 )
 
@@ -13,7 +13,7 @@ from utils.dataset_profiler import (
 # IMPORT DATA
 # =====================================
 
-from utils.data_loader import (
+from website.utils.data_loader import (
     build_analytics_data,
     PLOT_LAYOUT,
     AXIS_STYLE,

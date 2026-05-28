@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils.dataset_profiler import (
+from website.utils.dataset_profiler import (
     profile_dataset
 )
 

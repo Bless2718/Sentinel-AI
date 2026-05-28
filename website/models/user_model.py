@@ -1,4 +1,4 @@
-from models.database import db
+from website.models.database import db
 from flask_login import UserMixin
 
 # =====================================

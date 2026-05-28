@@ -1,5 +1,5 @@
 import pandas as pd
-from utils.severity_engine import (
+from website.utils.severity_engine import (
     calculate_dataframe_severity
 )
 # =====================================

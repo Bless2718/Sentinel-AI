@@ -21,9 +21,9 @@ from werkzeug.security import (
     check_password_hash
 )
 from flask_login import logout_user
-from models.database import db
+from website.models.database import db
 
-from models.user_model import User
+from website.models.user_model import User
 
 # =====================================
 # BLUEPRINT

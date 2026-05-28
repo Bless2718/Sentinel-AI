@@ -2,9 +2,9 @@ import pandas as pd
 
 from app import app
 
-from models.database import db
+from website.models.database import db
 
-from models.crime_model import CrimeData
+from website.models.crime_model import CrimeData
 
 # =====================================
 # CSV PATH

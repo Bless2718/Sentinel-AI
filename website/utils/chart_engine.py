@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-from utils.data_loader import (
+from website.utils.data_loader import (
     COLORS,
     PLOT_LAYOUT,
     AXIS_STYLE,

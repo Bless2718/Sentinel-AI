@@ -1,4 +1,4 @@
-from utils.dataset_profiler import (
+from website.utils.dataset_profiler import (
     profile_dataset
 )
 
@@ -14,35 +14,35 @@ from flask import (
 
 from flask_login import login_required
 
-from utils.pdf_engine import (
+from website.utils.pdf_engine import (
     generate_intelligence_pdf
 )
 
-from utils.alert_engine import (
+from website.utils.alert_engine import (
     generate_operational_alerts
 )
 
-from utils.risk_engine import (
+from website.utils.risk_engine import (
     calculate_risk_engine
 )
 
-from utils.filter_engine import (
+from website.utils.filter_engine import (
     apply_dashboard_filters
 )
 
-from utils.analytics_engine import (
+from website.utils.analytics_engine import (
     calculate_kpis,
     calculate_forecast_metrics
 )
 
-from utils.chart_engine import (
+from website.utils.chart_engine import (
     build_yearly_trend_chart,
     build_forecast_chart,
     build_anomaly_chart,
     build_hotspot_map
 )
 
-from utils.intelligence_engine import (
+from website.utils.intelligence_engine import (
     calculate_threat_score,
     classify_risk_level,
     build_hotspot_priority_table,
@@ -50,11 +50,11 @@ from utils.intelligence_engine import (
     generate_executive_summary
 )
 
-from utils.ai_narrative import (
+from website.utils.ai_narrative import (
     generate_ai_narrative
 )
 
-from utils.data_loader import (
+from website.utils.data_loader import (
     build_analytics_data
 )
 
