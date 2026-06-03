@@ -1,3 +1,4 @@
+from ml.feature_engineering.feature_pipeline import DATA_PATH
 from website.utils.data_standardizer import (
     standardize_dataframe
 )
@@ -35,12 +36,12 @@ def build_analytics_data():
 
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
     DATA_PATH = (
-    BASE_DIR / "data" / "Train.xlsx"
+    BASE_DIR / "data" / "Train.csv"
 )
-    master_df = pd.read_excel(
+    master_df = pd.read_csv(
 
-    DATA_PATH,
-    nrows=50000
+        DATA_PATH,
+        nrows=50000
 )
     print("MASTER DF SHAPE:", master_df.shape)
     print("MASTER DF MEMORY MB:",
