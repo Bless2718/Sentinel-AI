@@ -39,8 +39,12 @@ def build_analytics_data():
 )
     master_df = pd.read_excel(
 
-    DATA_PATH
+    DATA_PATH,
+    row=5000
 )
+    print("MASTER DF SHAPE:", master_df.shape)
+    print("MASTER DF MEMORY MB:",
+         round(master_df.memory_usage(deep=True).sum()/1024/1024,2))
     master_df = standardize_dataframe(
     master_df
 )
@@ -189,7 +193,7 @@ def build_analytics_data():
 
             master_df
         )
-
+        print("FORECAST DF SHAPE:", forecast_df.shape)
     except Exception as e:
 
         print(f"FORECAST ERROR: {e}")
@@ -206,7 +210,7 @@ def build_analytics_data():
 
             master_df
         )
-
+        print("ANOMALY DF SHAPE:", anomaly_df.shape)
     except Exception as e:
 
         print(f"ANOMALY ERROR: {e}")
@@ -223,7 +227,7 @@ def build_analytics_data():
 
             master_df
         )
-
+        print("CLUSTER DF SHAPE:", cluster_df.shape)
     except Exception as e:
 
         print(f"HOTSPOT ERROR: {e}")

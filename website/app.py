@@ -1,3 +1,4 @@
+from website.utils.data_loader import build_analytics_data
 from flask import Flask
 import os
 from website.models.user_model import User
@@ -17,6 +18,10 @@ from website.models.database import db
 # =====================================
 
 app = Flask(__name__)
+# =====================================
+# GLOBAL ANALYTICS CACHE
+# =====================================
+
 
 # =====================================
 # BASE DIRECTORY

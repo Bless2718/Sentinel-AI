@@ -20,4 +20,4 @@ website/uploads/
 
 # OS Files
 .DS_Store
-Thumbs.db
+Thumbs.dbgit rm -r --cached website/models/__pycache__
