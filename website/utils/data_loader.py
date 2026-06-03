@@ -40,7 +40,7 @@ def build_analytics_data():
     master_df = pd.read_excel(
 
     DATA_PATH,
-    nrow=5000
+    nrows=5000
 )
     print("MASTER DF SHAPE:", master_df.shape)
     print("MASTER DF MEMORY MB:",
