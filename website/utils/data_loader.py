@@ -40,8 +40,7 @@ def build_analytics_data():
 )
     master_df = pd.read_csv(
 
-        DATA_PATH,
-        nrows=50000
+        DATA_PATH
 )
     print("MASTER DF SHAPE:", master_df.shape)
     print("MASTER DF MEMORY MB:",
