@@ -12,7 +12,7 @@ from website.models.crime_model import CrimeData
 
 CSV_PATH = (
 
-    "D:/FBI_Crime_Project/data/final_cleaned_crime_data.csv"
+    "(__file__).resolve().parents[2]/data/final_cleaned_crime_data.csv"
 )
 
 # =====================================

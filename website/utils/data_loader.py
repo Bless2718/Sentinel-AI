@@ -1,4 +1,4 @@
-from ml.feature_engineering.feature_pipeline import DATA_PATH
+from website.config import DATA_PATH
 from website.utils.data_standardizer import (
     standardize_dataframe
 )

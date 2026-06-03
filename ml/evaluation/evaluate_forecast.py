@@ -13,11 +13,11 @@ import numpy as np
 # =========================================
 
 forecast_df = pd.read_csv(
-    "D:/FBI_Crime_Project/ml/outputs/future_forecast.csv"
+    "(__file__).resolve().parents[2]/ml/outputs/future_forecast.csv"
 )
 
 master_df = pd.read_csv(
-    "D:/FBI_Crime_Project/data/final_cleaned_crime_data.csv"
+    "(__file__).resolve().parents[2]/data/final_cleaned_crime_data.csv"
 )
 
 # =========================================
@@ -141,7 +141,7 @@ results = pd.DataFrame({
 
 results.to_csv(
 
-    "D:/FBI_Crime_Project/ml/outputs/model_metrics.csv",
+    "(__file__).resolve().parents[2]/ml/outputs/model_metrics.csv",
 
     index=False
 )

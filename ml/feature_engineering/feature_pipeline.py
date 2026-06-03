@@ -6,7 +6,7 @@ from pathlib import Path
 # PROJECT PATHS
 # =========================================
 
-BASE_DIR = Path("D:/FBI_Crime_Project")
+BASE_DIR = Path(__file__).resolve().parents[2]
 
 DATA_PATH = (
     BASE_DIR /
@@ -22,157 +22,141 @@ OUTPUT_PATH = (
 )
 
 # =========================================
-# LOAD DATA
+# FEATURE ENGINEERING FUNCTION
 # =========================================
 
-df = pd.read_csv(DATA_PATH)
+def run_feature_engineering():
+    # =========================================
+    # LOAD DATA
+    # =========================================
 
-print("\nDATASET LOADED\n")
+    df = pd.read_csv(DATA_PATH)
 
-# =========================================
-# CREATE DATE COLUMN
-# =========================================
+    print("\nDATASET LOADED\n")
 
-df['DATE'] = pd.to_datetime(
+    # =========================================
+    # CREATE DATE COLUMN
+    # =========================================
 
-    dict(
-        year=df['YEAR'],
-        month=df['MONTH'],
-        day=1
-    ),
+    df["DATE"] = pd.to_datetime(
+        dict(
+            year=df["YEAR"],
+            month=df["MONTH"],
+            day=1
+        ),
+        errors="coerce"
+    )
 
-    errors='coerce'
-)
+    # =========================================
+    # REMOVE INVALID DATES
+    # =========================================
 
-# =========================================
-# REMOVE INVALID DATES
-# =========================================
+    df.dropna(subset=["DATE"], inplace=True)
 
-df.dropna(subset=['DATE'], inplace=True)
+    # =========================================
+    # TEMPORAL FEATURES
+    # =========================================
 
-# =========================================
-# TEMPORAL FEATURES
-# =========================================
+    df["QUARTER"] = df["DATE"].dt.quarter
 
-df['QUARTER'] = (
+    df["MONTH_SIN"] = np.sin(
+        2 * np.pi * df["MONTH"] / 12
+    )
 
-    df['DATE']
-    .dt
-    .quarter
-)
+    df["MONTH_COS"] = np.cos(
+        2 * np.pi * df["MONTH"] / 12
+    )
 
-df['MONTH_SIN'] = np.sin(
+    # =========================================
+    # MONTHLY AGGREGATION
+    # =========================================
 
-    2 * np.pi * df['MONTH'] / 12
-)
+    monthly_crime = (
+        df
+        .groupby("DATE")
+        .size()
+        .reset_index(name="CRIME_COUNT")
+    )
 
-df['MONTH_COS'] = np.cos(
+    # =========================================
+    # ROLLING FEATURES
+    # =========================================
 
-    2 * np.pi * df['MONTH'] / 12
-)
+    monthly_crime["ROLLING_MEAN_3"] = (
+        monthly_crime["CRIME_COUNT"]
+        .rolling(window=3)
+        .mean()
+    )
 
-# =========================================
-# MONTHLY AGGREGATION
-# =========================================
+    monthly_crime["ROLLING_STD_3"] = (
+        monthly_crime["CRIME_COUNT"]
+        .rolling(window=3)
+        .std()
+    )
 
-monthly_crime = (
+    # =========================================
+    # GROWTH RATE
+    # =========================================
 
-    df
-    .groupby('DATE')
-    .size()
-    .reset_index(name='CRIME_COUNT')
-)
+    monthly_crime["GROWTH_RATE"] = (
+        monthly_crime["CRIME_COUNT"]
+        .pct_change()
+    )
 
-# =========================================
-# ROLLING MEAN
-# =========================================
+    # =========================================
+    # LAG FEATURES
+    # =========================================
 
-monthly_crime['ROLLING_MEAN_3'] = (
+    monthly_crime["LAG_1"] = (
+        monthly_crime["CRIME_COUNT"]
+        .shift(1)
+    )
 
-    monthly_crime['CRIME_COUNT']
-    .rolling(window=3)
-    .mean()
-)
+    monthly_crime["LAG_2"] = (
+        monthly_crime["CRIME_COUNT"]
+        .shift(2)
+    )
 
-# =========================================
-# ROLLING STD
-# =========================================
+    monthly_crime["LAG_3"] = (
+        monthly_crime["CRIME_COUNT"]
+        .shift(3)
+    )
 
-monthly_crime['ROLLING_STD_3'] = (
+    # =========================================
+    # VOLATILITY FEATURE
+    # =========================================
 
-    monthly_crime['CRIME_COUNT']
-    .rolling(window=3)
-    .std()
-)
+    monthly_crime["VOLATILITY"] = (
+        monthly_crime["ROLLING_STD_3"] /
+        monthly_crime["ROLLING_MEAN_3"]
+    )
 
-# =========================================
-# GROWTH RATE
-# =========================================
+    # =========================================
+    # DROP NULLS
+    # =========================================
 
-monthly_crime['GROWTH_RATE'] = (
+    monthly_crime.dropna(inplace=True)
 
-    monthly_crime['CRIME_COUNT']
-    .pct_change()
-)
+    # =========================================
+    # SAVE ENGINEERED FEATURES
+    # =========================================
 
-# =========================================
-# LAG FEATURES
-# =========================================
+    monthly_crime.to_csv(
+        OUTPUT_PATH,
+        index=False
+    )
 
-monthly_crime['LAG_1'] = (
+    # =========================================
+    # SUCCESS MESSAGE
+    # =========================================
 
-    monthly_crime['CRIME_COUNT']
-    .shift(1)
-)
+    print("\nFEATURE ENGINEERING COMPLETE\n")
+    print(monthly_crime.head())
+    print("\nFEATURES SAVED TO:\n")
+    print(OUTPUT_PATH)
 
-monthly_crime['LAG_2'] = (
+    return monthly_crime
 
-    monthly_crime['CRIME_COUNT']
-    .shift(2)
-)
 
-monthly_crime['LAG_3'] = (
-
-    monthly_crime['CRIME_COUNT']
-    .shift(3)
-)
-
-# =========================================
-# VOLATILITY FEATURE
-# =========================================
-
-monthly_crime['VOLATILITY'] = (
-
-    monthly_crime['ROLLING_STD_3'] /
-
-    monthly_crime['ROLLING_MEAN_3']
-)
-
-# =========================================
-# DROP NULLS
-# =========================================
-
-monthly_crime.dropna(inplace=True)
-
-# =========================================
-# SAVE ENGINEERED FEATURES
-# =========================================
-
-monthly_crime.to_csv(
-
-    OUTPUT_PATH,
-
-    index=False
-)
-
-# =========================================
-# SUCCESS MESSAGE
-# =========================================
-
-print("\nFEATURE ENGINEERING COMPLETE\n")
-
-print(monthly_crime.head())
-
-print("\nFEATURES SAVED TO:\n")
-
-print(OUTPUT_PATH)
+if __name__ == "__main__":
+    run_feature_engineering()

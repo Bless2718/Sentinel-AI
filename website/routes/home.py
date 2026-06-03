@@ -63,7 +63,7 @@ from website.utils.data_loader import (
 # =====================================
 
 metrics_path = (
-    "D:/FBI_Crime_Project/ml/outputs/model_metrics.csv"
+    "(__file__).resolve().parents[2]/ml/outputs/model_metrics.csv"
 )
 
 try:

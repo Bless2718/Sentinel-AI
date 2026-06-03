@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv(
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "threat_classification_dataset.csv"
 )
 
@@ -43,7 +43,7 @@ X = df[features]
 
 model = joblib.load(
 
-    "D:/FBI_Crime_Project/ml/models/"
+    "(__file__).resolve().parents[2]/ml/models/"
     "threat_classifier.pkl"
 )
 
@@ -79,7 +79,7 @@ shap.summary_plot(
 
 output_path = (
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "shap_summary.png"
 )
 
@@ -114,7 +114,7 @@ shap.summary_plot(
 
 bar_output = (
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "shap_feature_importance.png"
 )
 

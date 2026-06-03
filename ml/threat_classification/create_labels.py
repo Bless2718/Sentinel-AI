@@ -6,7 +6,7 @@ import pandas as pd
 
 df = pd.read_csv(
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "crime_anomalies_detected.csv"
 )
 
@@ -85,7 +85,7 @@ print(
 
 output_path = (
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "threat_classification_dataset.csv"
 )
 

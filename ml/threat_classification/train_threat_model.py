@@ -21,7 +21,7 @@ import joblib
 
 df = pd.read_csv(
 
-    "D:/FBI_Crime_Project/ml/outputs/"
+    "(__file__).resolve().parents[2]/ml/outputs/"
     "threat_classification_dataset.csv"
 )
 
@@ -157,13 +157,13 @@ print(
 
 model_path = (
 
-    "D:/FBI_Crime_Project/ml/models/"
+    "(__file__).resolve().parents[2]/ml/models/"
     "threat_classifier.pkl"
 )
 
 encoder_path = (
 
-    "D:/FBI_Crime_Project/ml/models/"
+    "(__file__).resolve().parents[2]/ml/models/"
     "threat_label_encoder.pkl"
 )
 

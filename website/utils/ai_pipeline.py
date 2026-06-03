@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from website.config import DATA_PATH
 from sklearn.cluster import DBSCAN
 from sklearn.ensemble import IsolationForest
 

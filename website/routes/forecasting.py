@@ -26,7 +26,7 @@ from website.utils.data_loader import (
 try:
 
     metrics_df = pd.read_csv(
-        "D:/FBI_Crime_Project/ml/outputs/model_metrics.csv"
+        "(__file__).resolve().parents[2]/ml/outputs/model_metrics.csv"
     )
 
 except Exception:

@@ -12,7 +12,7 @@ import numpy as np
 # PROJECT PATHS
 # =========================================
 
-BASE_DIR = Path("D:/FBI_Crime_Project")
+BASE_DIR = Path("(__file__).resolve().parents[2]")
 
 FEATURE_PATH = (
     BASE_DIR /
